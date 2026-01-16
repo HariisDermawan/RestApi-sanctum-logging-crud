@@ -34,10 +34,9 @@ class TodolistController extends Controller
                 'is_done' => $data['is_done']
             ]
         );
+
         return new TodolistResource($todolist);
     }
-
-
     /**
      * Display the specified resource.
      */
@@ -47,7 +46,6 @@ class TodolistController extends Controller
         if (!$todolist) {
             return response(['message' => 'Todolist Not Found!'], 404);
         }
-
         return new TodolistResource($todolist);
     }
 
@@ -80,14 +78,13 @@ class TodolistController extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         $todolist = Todolist::find($id);
-        if(!$todolist){
+        if (!$todolist) {
             return response(['message' => 'Todolist Not Found!'], 404);
         }
 
@@ -95,6 +92,6 @@ class TodolistController extends Controller
 
         return response()->json([
             'message' => 'todolist Deleted successfully'
-        ],200);
+        ], 200);
     }
 }
